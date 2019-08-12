@@ -24,4 +24,9 @@ public class Weapon
         targetRb.AddForceAtPosition(force * shootForce, shootPoint);
         shootAudio.Play();
     }
+
+    public void ClearShootTrace()
+    {
+        projectileLineRenderer.enabled = false;
+    }
 }

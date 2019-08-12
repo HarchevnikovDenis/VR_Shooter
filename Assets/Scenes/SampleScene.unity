@@ -877,7 +877,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerHead: {fileID: 534669905}
   weapon:
-    fireRate: 0.1
+    fireRate: 0.5
     shootForce: 1000
     gunEnd: {fileID: 647645481}
     shootAudio: {fileID: 1988825405}
