@@ -8,6 +8,7 @@ public class Player : MonoBehaviour
     public Weapon weapon;
     private float shootTimer = 0.0f;
     private WaitForSeconds lineRendererLifeTime;
+    private ImageProgressBar imgProgressBar;
 
     void Start()
     {
@@ -34,6 +35,24 @@ public class Player : MonoBehaviour
             {
                 MakeShot(hit.collider.GetComponent<Rigidbody>(), hit);
                 StartCoroutine(HandleLineRenderer());
+                return;
+            }
+            if(hit.collider.gameObject.CompareTag("VR_UI"))
+            {
+                imgProgressBar = hit.collider.gameObject.GetComponent<ImageProgressBar>();
+                imgProgressBar.GazeOver = true;
+                imgProgressBar.StartFillingProgressBar();
+                return;
+            }
+            else
+            {
+                if(imgProgressBar != null)
+                {
+                    imgProgressBar.GazeOver = false;
+                    imgProgressBar.StopFillingProgressBar();
+                    imgProgressBar = null;
+                    return;
+                }
             }
         }
     }
