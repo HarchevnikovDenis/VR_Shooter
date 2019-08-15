@@ -41,6 +41,7 @@ public class WalkingTarget : MonoBehaviour
 
     public void TakeDamage()
     {
+        GameObject[] cubesOfTarget = new GameObject[9];
         health--;
         healthImages[health].SetActive(false);
         if(health <= 0)
@@ -51,5 +52,4 @@ public class WalkingTarget : MonoBehaviour
             Destroy(go, 5.0f);
         }
     }
-
 }
