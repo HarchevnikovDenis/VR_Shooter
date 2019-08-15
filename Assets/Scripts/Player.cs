@@ -34,7 +34,11 @@ public class Player : MonoBehaviour
             if(hit.collider.gameObject.CompareTag("Target") && shootTimer >= weapon.fireRate)
             {
                 MakeShot(hit.collider.GetComponent<Rigidbody>(), hit);
-                StartCoroutine(HandleLineRenderer());
+                return;
+            }
+            if(hit.collider.gameObject.CompareTag("WalkingTarget") && shootTimer >= weapon.fireRate)
+            {
+                MakeWalkingTargetShot(hit.collider.gameObject, hit);
                 return;
             }
             if(hit.collider.gameObject.CompareTag("VR_UI"))
@@ -61,6 +65,14 @@ public class Player : MonoBehaviour
     {
         weapon.Shoot(hit.point, -hit.normal, targetRb);
         shootTimer = 0.0f;
+        StartCoroutine(HandleLineRenderer());
+    }
+
+    private void MakeWalkingTargetShot(GameObject targetGo, RaycastHit hit)
+    {
+        weapon.ShootWalkingTarget(hit.point, -hit.normal, targetGo);
+        shootTimer = 0.0f;
+        StartCoroutine(HandleLineRenderer());
     }
 
     private IEnumerator HandleLineRenderer()

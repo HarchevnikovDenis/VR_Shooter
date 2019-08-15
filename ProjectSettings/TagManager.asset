@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Target
+  - VR_UI
   layers:
   - Default
   - TransparentFX

@@ -25,8 +25,19 @@ public class Weapon
         shootAudio.Play();
     }
 
+    public void ShootWalkingTarget(Vector3 shootPoint, Vector3 force, GameObject targetGo)
+    {
+        projectileLineRenderer.enabled = true;
+        projectileLineRenderer.SetPosition(0, gunEnd.position);
+        projectileLineRenderer.SetPosition(1, shootPoint);
+
+        targetGo.GetComponent<WalkingTarget>().TakeDamage();
+        shootAudio.Play();
+    }
+
     public void ClearShootTrace()
     {
         projectileLineRenderer.enabled = false;
     }
+
 }
