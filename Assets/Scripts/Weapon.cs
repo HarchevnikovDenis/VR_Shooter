@@ -6,7 +6,7 @@ using UnityEngine;
 public class Weapon
 {
     public float fireRate = 0.1f;
-    public float shootForce = 1000.0f;
+    public float shootForce = 10000.0f;
     public Transform gunEnd;
     public AudioSource shootAudio;
     public LineRenderer projectileLineRenderer;
